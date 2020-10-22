@@ -19,6 +19,12 @@ function setup(){
 
     umbrella = new Umbrella(200, 550);
 
+    if (frameCount % 150 === 0){
+        for (var i = 0; i<maxDrops; i++){
+            drops.push(new Drop(random(0, 400), random(0, 400)));
+        }
+    }
+
     
 }
 
@@ -26,22 +32,14 @@ function draw(){
     Engine.update(engine);
     background(69, 70, 75);
 
-    if (frameCount%1 === 0){
-        drops.push(new Drop(random(0, 400), 1));
-    }
-
-    if (frameCount%1 === 0){
-        drops.push(new Drop(random(0, 400),1));
-    }
-
-    for (var k = 0; k < drops.length; k++){
-        drops[k].display();
-    }
     
     umbrella.display();
-
+    for(var i = 0; i<maxDrops; i++){
+        drops[i].display();
+        drops[i].update();   
+    }
     drawSprites();
-    console.log(frameRate);
+    console.log(drops.length);
 }   
 
 
