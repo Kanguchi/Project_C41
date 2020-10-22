@@ -41,5 +41,7 @@ function draw(){
     umbrella.display();
 
     drawSprites();
+    console.log(frameRate);
 }   
+
 
